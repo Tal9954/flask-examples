@@ -6,6 +6,7 @@ COPY . ./
 RUN pip3 install --upgrade pip
 RUN pip3 install --no-cache-dir -r requirements.txt
 RUN apt update && apt install vim -y
+RUN pip3 install pandas
 WORKDIR /app/hello
 EXPOSE 5000
 CMD ["flask", "run","--host=0.0.0.0"]
