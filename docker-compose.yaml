@@ -1,0 +1,9 @@
+version: '3'
+services:
+  app:  # Service name should be simple
+    image: flask-image
+    container_name: app_main
+    restart: always
+    ports:
+      - "5000:5000"
+
