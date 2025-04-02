@@ -1,4 +1,5 @@
-name: publish image to docker
+name: Publish Image to Docker
+
 on:
   push:
     branches: ["main"]
@@ -8,11 +9,13 @@ on:
 jobs:
   publish_image:
     runs-on: ubuntu-latest
+    
     steps:
-      -name: checkout
-      uses: actions/checkout@v4
-      -name: build image
-       run: docker build /home/ta/flask-examples -t localhost:8082/shlomi
-      -name: push image to local registry
-       run:
-         docker push localhost:8082/shlomi
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build image
+        run: docker build -t localhost:8082/shlomi .
+
+      - name: Push image to local registry
+        run: docker push localhost:8082/shlomi
