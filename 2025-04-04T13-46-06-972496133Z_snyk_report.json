@@ -1,0 +1,5 @@
+{
+  "ok": false,
+  "error": "Failed to test pip project",
+  "path": "/var/jenkins_home/workspace/test1"
+}
