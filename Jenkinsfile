@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
 		docker build shlomke
-		docker tag shlomke "localhost:5000/shlomke-test
+		docker tag shlomke "localhost:5000/shlomke-test"
 		docker push localhost:5000/shlomke-test
                 
             }
