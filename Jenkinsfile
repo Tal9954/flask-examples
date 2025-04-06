@@ -13,7 +13,6 @@ pipeline {
                 // Push the Docker image to the registry
                 sh 'docker push localhost:5000/shlomke-test'
 		echo -e "\033[31mRed\033[0m"
-		printf "\033[31mRed\033[0m"
 		printf "\033[31mRed\033[0m\n"
             }
         }
