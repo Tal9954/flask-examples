@@ -15,10 +15,10 @@ pipeline {
         stage('Test') {
             steps {
                 snykSecurity(
-                    snykInstallation: 'snyk',  // Use the correct Snyk installation name here
-                    snykTokenId: 'snyk-token',  // Use the correct secret ID for your Snyk token
+                    snykInstallation: 'snyk',  
+                    snykTokenId: c879a1c6-ae8c-4cb5-9a17-14db60c116bd, 
                     // Specify the Docker image to scan
-                    dockerImage: 'shlomke'  // This scans the 'shlomke' image built in the previous step
+                    dockerImage: 'shlomke'  
                 )
             }
         }
