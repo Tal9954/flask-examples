@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Build the Docker image
-                sh 'docker build -t shlomke .'  
+                sh 'docker build -t shlomke .'
                 // Tag the Docker image
                 sh 'docker tag shlomke localhost:5000/shlomke-test'
                 // Push the Docker image to the registry
@@ -14,11 +14,12 @@ pipeline {
         }
         stage('Test') {
             steps {
-                 snykSecurity(
-          snykInstallation: '<snyk:latest>',
-          snykTokenId: '<c879a1c6-ae8c-4cb5-9a17-14db60c116bd>',
-          // --docker shlomke
-        )
+                snykSecurity(
+                    snykInstallation: 'snyk',  // Use the correct Snyk installation name here
+                    snykTokenId: 'snyk-token',  // Use the correct secret ID for your Snyk token
+                    // Specify the Docker image to scan
+                    dockerImage: 'shlomke'  // This scans the 'shlomke' image built in the previous step
+                )
             }
         }
         stage('Deploy') {
@@ -28,3 +29,4 @@ pipeline {
         }
     }
 }
+
