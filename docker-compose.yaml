@@ -1,9 +1,28 @@
-version: '3'
+version: '3.8'
+
 services:
-  app:  # Service name should be simple
-    image: flask-image
-    container_name: app_main
+  jenkins:
+    image: jenkins/jenkins:lts
+    container_name: jenkins
     restart: always
     ports:
-      - "5000:5000"
+      - "8080:8080"
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /home/ta/.ssh:/var/jenkins_home/.ssh
 
+  regi:
+    image: sonatype/nexus3
+    container_name: nexus
+    ports:
+      - "8081:8081" 
+      - "8082:8082"
+      - "8083:8083"
+    volumes:
+      - /home/ta/nexus-data:/nexus-data 
+      - /opt/sonatype-work/nexus3/ssl:/opt/sonatype-work/nexus3/etc/ssl
+
+volumes:
+  jenkins_home:
