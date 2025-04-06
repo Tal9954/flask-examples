@@ -18,7 +18,7 @@ pipeline {
                     snykInstallation: 'snyk',
                     snykTokenId: '4a771172-fc3c-4d70-bab9-9a896db78568', 
                     // Specify the Docker image to scan
-                    dockerImage: 'shlomke'
+                    --docker 'shlomke'
                 )
             }
         }
