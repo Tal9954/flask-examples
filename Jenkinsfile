@@ -4,10 +4,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-		docker build shlomke
-		docker tag shlomke "localhost:5000/shlomke-test"
-		docker push localhost:5000/shlomke-test
-                
+                // Build the Docker image
+                sh 'docker build -t shlomke .'  // Note: added the dot to indicate the context of the Dockerfile
+                // Tag the Docker image
+                sh 'docker tag shlomke localhost:5000/shlomke-test'
+                // Push the Docker image to the registry
+                sh 'docker push localhost:5000/shlomke-test'
             }
         }
         stage('Test') {
