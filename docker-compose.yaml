@@ -12,7 +12,15 @@ services:
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /home/ta/.ssh:/var/jenkins_home/.ssh
+  agent1:
+    image: jenkins/ssh-agent
+    container_name: agent1
+    restart: always
+    environment:
+      - JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCkwbiCfj7QveAfkGw6KdEwhP4uySxmWPl6Dy7/fu2ncSnFS01lOUNMIhW9OhHD1l30RaRuFmOERniFkPeqTY9AwH/ScvmKsy1ciJ7ihrvOCzieY5/5TZrlgkUAzb4n6ki+Zngc3D7wk3pTH53maekhWuPriiGBaPihzKGa/pdA6ImTGpWqHhoOW5Gt+GDv67cQEI430RP4vMXLYt5sgQZZ+hBHydhfoN9xOP0pewOfl7OVKiZi61Je9eVOsVuPtwcwspnoo5ezzIMDxTBjMJ+SZxQOcfufweOs9kXiyQU7JNiTCxb1UBxOyFEdpUHZ0Bxmqqv4oI/28gxMNZxAhU+dNZOoSdGjhvNeheAt5APzY+MINMv48VP+/hKcD8ASDnzmaBw/WCu6FshB6M9hrrPn3J0lBbRGC8z2/tgawYwJAUBP+BJMzrjBQ4SOy6A1cGp8ak9P2Ua5cIYeUk2Ox4JmVStixsFk6W6a6+1gTLUbdYGsrh/sFaQhyrjngMaI0O8= tal@tal-Latitude-7420
 
+    volumes:
+      - /home/tal/.ssh:/var/agent1/.ssh
   regi:
     image: sonatype/nexus3
     container_name: nexus

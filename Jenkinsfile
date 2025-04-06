@@ -4,7 +4,10 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+		docker build shlomke
+		docker tag shlomke "localhost:5000/shlomke-test
+		docker push localhost:5000/shlomke-test
+                
             }
         }
         stage('Test') {
