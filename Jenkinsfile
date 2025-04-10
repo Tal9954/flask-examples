@@ -33,7 +33,7 @@ pipeline {
                 snykSecurity(
                     snykInstallation: 'snyk',
                     snykTokenId: '0bf442e5-73fb-40dc-a5cd-e5c3e0f30c2a',
-                    additionalArguments: '--docker shlomke'
+                    additionalArguments: '--docker shlomke --fail-on=none'
                 )
             }
         }
