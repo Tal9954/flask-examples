@@ -9,9 +9,9 @@ pipeline {
                 // Build the Docker image
                 sh 'docker build -t shlomke .'
                 // Tag the Docker image
-                sh 'docker tag shlomke localhost:5000/shlomke-test'
+                sh 'docker tag shlomke localhost:8082/shlomke-test'
                 // Push the Docker image to the registry
-                sh 'docker push localhost:5000/shlomke-test'
+                sh 'docker push localhost:8082/shlomke-test'
 	        sh 'echo -e "\033[31mRed\033[0m"'
 		sh 'printf "\033[31mRed\033[0m\n"'
             }
